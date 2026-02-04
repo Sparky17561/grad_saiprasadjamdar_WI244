@@ -7,7 +7,7 @@ A robust, console-based Java application designed to manage real estate layouts,
 
 The system divides functionality into two secure roles:
 * **Administrator:** Manages the entire layout, registers owners, assigns sites, and oversees financial collections.
-* **Owner:** A restricted user who can view their specific sites, pay maintenance dues, and request site type changes (e.g., upgrading from an Open Site to a Villa).
+* **Owner:** A restricted user who can view their specific sites, pay maintenance dues, and request site type changes.
 
 ---
 
@@ -59,17 +59,14 @@ src/com/layoutapp/
 
 To set up the database, run the provided SQL script in **pgAdmin 4**. This script handles clean slate creation (dropping old tables) and seeding initial data.
 
-**Quick Setup Summary:**
+**Configuration:**
+You must update the `src/com/layoutapp/config/DatabaseConnection.java` file with your local PostgreSQL credentials:
 
-1. **Database Name:** `layoutmanagement`
-2. **Tables Created:** `users`, `sites`, `payments`, `site_change_requests`
-3. **Default Admin Credentials:**
-* **Username:** `admin`
-* **Password:** `admin`
+```java
+private static final String USER = "db_username"; // e.g., postgres
+private static final String PASSWORD = "db_password"; // e.g., admin123
 
-
-
-> **Note:** Ensure your `src/com/layoutapp/config/DatabaseConnection.java` file matches your local PostgreSQL password!
+```
 
 ---
 
@@ -103,5 +100,19 @@ java -cp ".;../lib/postgresql-42.7.5.jar" com.layoutapp.Main
 
 ```
 
+### 🔑 usage & Login Guide
 
+Once the application is running, you can log in using the seed data provided in the SQL script:
+
+**1. Login as Administrator**
+
+* **Username:** `admin`
+* **Password:** `admin`
+* *Access:* Full control over sites, owners, and financials.
+
+**2. Login as Owner (User)**
+
+* **Username:** `rohit` (or any registered owner username)
+* **Password:** `9876543210` (**Note:** For owners, the password is their **Registered Phone Number**)
+* *Access:* View own sites, make payments, and raise requests.
 
