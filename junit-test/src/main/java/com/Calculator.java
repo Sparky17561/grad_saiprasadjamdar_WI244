@@ -1,0 +1,33 @@
+package com;
+
+public class Calculator {
+	
+	Calculator(){
+		System.out.println("Main Obj Created"); // for testing how many obj is created
+	}
+
+	public int add(int a, int b) {
+		return a+b;
+	}
+
+	public int sub(int a, int b) {
+		return a-b;
+	}
+
+	public int mul(int a, int b) {
+		return a*b;
+	}
+
+	public int div(int a, int b) {
+		if(b==0) {
+			throw new ArithmeticException();
+		}
+		return a/b;
+	}
+	
+	public int mod(int a,int b) {
+		return a%b;
+	}
+
+	
+}
